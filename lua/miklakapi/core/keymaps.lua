@@ -1,13 +1,7 @@
 local keymap = vim.keymap.set
 
-keymap("n", "<leader>pv", vim.cmd.Vex, {
-    desc = "Open vertical explorer",
-})
-
-keymap("n", "<leader><CR>", function()
-    vim.cmd("source ~/.config/nvim/init.lua")
-end, {
-    desc = "Reload Neovim config",
+keymap("n", "<leader>pv", vim.cmd.Ex, {
+    desc = "Open explorer",
 })
 
 keymap("n", "<C-d>", "<C-d>zz", {
