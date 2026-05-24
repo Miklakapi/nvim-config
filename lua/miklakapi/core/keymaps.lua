@@ -1,7 +1,7 @@
 local keymap = vim.keymap.set
 
 keymap("n", "<leader>pv", vim.cmd.Ex, {
-    desc = "Open explorer",
+    desc = "Open file explorer",
 })
 
 keymap("n", "<C-d>", "<C-d>zz", {
