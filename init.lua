@@ -1,3 +1,4 @@
+require("miklakapi.core.diagnostics")
 require("miklakapi.core.options")
 require("miklakapi.core.keymaps")
 require("miklakapi.core.autocmds")

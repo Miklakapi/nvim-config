@@ -9,7 +9,7 @@ return {
     config = function()
         local treesitter = require("nvim-treesitter")
 
-        local languages = {
+        local parsers = {
             "lua",
             "vim",
             "vimdoc",
@@ -33,12 +33,36 @@ return {
             "gowork",
         }
 
+        local filetypes = {
+            "lua",
+            "vim",
+            "javascript",
+            "javascriptreact",
+            "typescript",
+            "typescriptreact",
+            "vue",
+            "php",
+            "html",
+            "css",
+            "scss",
+            "json",
+            "yaml",
+            "python",
+            "sh",
+            "bash",
+            "markdown",
+            "go",
+            "gomod",
+            "gosum",
+            "gowork",
+        }
+
         treesitter.setup()
 
-        treesitter.install(languages)
+        treesitter.install(parsers)
 
         vim.api.nvim_create_autocmd("FileType", {
-            pattern = languages,
+            pattern = filetypes,
             callback = function()
                 vim.treesitter.start()
             end,

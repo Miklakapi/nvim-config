@@ -5,6 +5,7 @@ local servers = {
     "lua_ls",
     "vtsls",
     "vue_ls",
+    "eslint",
     "intelephense",
     "gopls",
     "pyright",
@@ -85,6 +86,23 @@ return {
 
             vim.lsp.config("vue_ls", {
                 capabilities = capabilities,
+            })
+
+            vim.lsp.config("eslint", {
+                capabilities = capabilities,
+                filetypes = {
+                    "javascript",
+                    "javascriptreact",
+                    "typescript",
+                    "typescriptreact",
+                    "vue",
+                },
+                settings = {
+                    workingDirectories = {
+                        mode = "auto",
+                    },
+                    format = false,
+                },
             })
 
             vim.lsp.config("intelephense", {
