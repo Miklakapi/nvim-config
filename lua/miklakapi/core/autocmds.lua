@@ -4,7 +4,17 @@ local augroup = vim.api.nvim_create_augroup
 local yank_group = augroup("HighlightYank", {
     clear = true,
 })
-local miklakapiGroup = augroup("Miklakapi", {})
+
+local miklakapi_group = augroup("Miklakapi", {
+    clear = true,
+})
+
+local function lsp_keymap(buffer, mode, lhs, rhs, desc)
+    vim.keymap.set(mode, lhs, rhs, {
+        buffer = buffer,
+        desc = desc,
+    })
+end
 
 autocmd("TextYankPost", {
     group = yank_group,
@@ -17,17 +27,40 @@ autocmd("TextYankPost", {
 })
 
 autocmd("LspAttach", {
-    group = miklakapiGroup,
-    callback = function (e)
-        local opts = { buffer = e.buf }
-        vim.keymap.set("n", "gd", function() vim.lsp.buf.definition() end, opts)
-        vim.keymap.set("n", "K", function() vim.lsp.buf.hover() end, opts)
-        vim.keymap.set("n", "<leader>gr", function() vim.lsp.buf.references() end, opts)
-        vim.keymap.set("n", "<leader>vd", function() vim.diagnostic.open_float() end, opts)
-        vim.keymap.set("n", "<leader>vca", function() vim.lsp.buf.code_action() end, opts)
-        vim.keymap.set("n", "<leader>vrn", function() vim.lsp.buf.rename() end, opts)
-        vim.keymap.set("i", "<C-h>", function() vim.lsp.buf.signature_help() end, opts)
-        vim.keymap.set("n", "[d", function() vim.diagnostic.goto_next() end, opts)
-        vim.keymap.set("n", "]d", function() vim.diagnostic.goto_prev() end, opts)
-    end
+    group = miklakapi_group,
+    callback = function(event)
+        local buffer = event.buf
+
+        lsp_keymap(buffer, "n", "gd", function()
+            vim.lsp.buf.definition()
+        end, "Go to definition")
+
+        lsp_keymap(buffer, "n", "K", function()
+            vim.lsp.buf.hover()
+        end, "Show documentation")
+
+        lsp_keymap(buffer, "n", "gr", function()
+            vim.lsp.buf.references()
+        end, "Show references")
+
+        lsp_keymap(buffer, "n", "vd", function()
+            vim.diagnostic.open_float()
+        end, "Show line diagnostic")
+
+        lsp_keymap(buffer, "n", "vca", function()
+            vim.lsp.buf.code_action()
+        end, "Code action")
+
+        lsp_keymap(buffer, "n", "vrn", function()
+            vim.lsp.buf.rename()
+        end, "Rename symbol")
+
+        lsp_keymap(buffer, "n", "[d", function()
+            vim.diagnostic.goto_next()
+        end, "Next diagnostic")
+
+        lsp_keymap(buffer, "n", "]d", function()
+            vim.diagnostic.goto_prev()
+        end, "Previous diagnostic")
+    end,
 })

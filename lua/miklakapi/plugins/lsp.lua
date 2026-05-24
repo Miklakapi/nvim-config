@@ -1,5 +1,14 @@
-local vue_language_server_path = vim.fn.stdpath("data")
-    .. "/mason/packages/vue-language-server/node_modules/@vue/language-server"
+local vue_language_server_path = vim.fn.stdpath("data") ..
+    "/mason/packages/vue-language-server/node_modules/@vue/language-server"
+
+local servers = {
+    "lua_ls",
+    "vtsls",
+    "vue_ls",
+    "intelephense",
+    "gopls",
+    "pyright",
+}
 
 return {
     {
@@ -16,14 +25,7 @@ return {
         },
         config = function()
             require("mason-lspconfig").setup({
-                ensure_installed = {
-                    "lua_ls",
-                    "vtsls",
-                    "vue_ls",
-                    "intelephense",
-                    "gopls",
-                    "pyright",
-                },
+                ensure_installed = servers,
             })
         end,
     },
@@ -33,9 +35,13 @@ return {
         dependencies = {
             "williamboman/mason.nvim",
             "williamboman/mason-lspconfig.nvim",
+            "hrsh7th/cmp-nvim-lsp",
         },
         config = function()
+            local capabilities = require("cmp_nvim_lsp").default_capabilities()
+
             vim.lsp.config("lua_ls", {
+                capabilities = capabilities,
                 settings = {
                     Lua = {
                         diagnostics = {
@@ -51,6 +57,7 @@ return {
             })
 
             vim.lsp.config("vtsls", {
+                capabilities = capabilities,
                 filetypes = {
                     "javascript",
                     "javascriptreact",
@@ -76,22 +83,23 @@ return {
                 },
             })
 
-            vim.lsp.config("vue_ls", {})
-
-            vim.lsp.config("intelephense", {})
-
-            vim.lsp.config("gopls", {})
-
-            vim.lsp.config("pyright", {})
-
-            vim.lsp.enable({
-                "lua_ls",
-                "vtsls",
-                "vue_ls",
-                "intelephense",
-                "gopls",
-                "pyright",
+            vim.lsp.config("vue_ls", {
+                capabilities = capabilities,
             })
+
+            vim.lsp.config("intelephense", {
+                capabilities = capabilities,
+            })
+
+            vim.lsp.config("gopls", {
+                capabilities = capabilities,
+            })
+
+            vim.lsp.config("pyright", {
+                capabilities = capabilities,
+            })
+
+            vim.lsp.enable(servers)
         end,
     },
 }
