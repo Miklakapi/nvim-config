@@ -33,5 +33,19 @@ return {
             end,
             desc = "Git diff split",
         },
+        {
+            "<leader>gp",
+            function()
+                vim.cmd("Git push")
+            end,
+            desc = "Git push",
+        },
+        {
+            "<leader>gl",
+            function()
+                vim.cmd("Git pull")
+            end,
+            desc = "Git pull",
+        },
     },
 }
