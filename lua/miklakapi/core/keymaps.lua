@@ -35,3 +35,11 @@ keymap("v", "J", ":m '>+1<CR>gv=gv", {
 keymap("v", "K", ":m '<-2<CR>gv=gv", {
     desc = "Move selected lines up",
 })
+
+keymap("n", "Y", [["+yy]], {
+    desc = "Yank line to system clipboard",
+})
+
+keymap("v", "Y", [["+y]], {
+    desc = "Yank selection to system clipboard",
+})
