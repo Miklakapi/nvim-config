@@ -172,6 +172,25 @@ return {
 
             vim.lsp.config("intelephense", {
                 capabilities = capabilities,
+                filetypes = {
+                    "php",
+                },
+                settings = {
+                    intelephense = {
+                        files = {
+                            maxSize = 5000000,
+                        },
+                        diagnostics = {
+                            undefinedTypes = true,
+                            undefinedFunctions = true,
+                            undefinedConstants = true,
+                            undefinedClassConstants = true,
+                            undefinedMethods = true,
+                            undefinedProperties = true,
+                            undefinedVariables = true,
+                        },
+                    },
+                },
             })
 
             vim.lsp.config("gopls", {

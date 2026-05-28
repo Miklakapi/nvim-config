@@ -53,17 +53,12 @@ return {
             yaml = {
                 "prettier",
             },
+            php = {
+                "php_cs_fixer",
+            },
         },
 
-        format_on_save = function(buffer)
-            local disabled_filetypes = {
-                php = true,
-            }
-
-            if disabled_filetypes[vim.bo[buffer].filetype] then
-                return
-            end
-
+        format_on_save = function()
             return {
                 timeout_ms = 1000,
                 lsp_fallback = true,
