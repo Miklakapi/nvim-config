@@ -6,6 +6,7 @@ local servers = {
     "vtsls",
     "vue_ls",
     "eslint",
+    "cssls",
     "intelephense",
     "gopls",
     "pyright",
@@ -102,6 +103,26 @@ return {
                         mode = "auto",
                     },
                     format = false,
+                },
+            })
+
+            vim.lsp.config("cssls", {
+                capabilities = capabilities,
+                filetypes = {
+                    "css",
+                    "scss",
+                    "less",
+                },
+                settings = {
+                    css = {
+                        validate = true,
+                    },
+                    scss = {
+                        validate = true,
+                    },
+                    less = {
+                        validate = true,
+                    },
                 },
             })
 
