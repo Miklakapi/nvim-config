@@ -181,14 +181,9 @@ return {
                             maxSize = 5000000,
                         },
                         diagnostics = {
-                            undefinedTypes = true,
-                            undefinedFunctions = true,
-                            undefinedConstants = true,
-                            undefinedClassConstants = true,
-                            undefinedMethods = true,
-                            undefinedProperties = true,
-                            undefinedVariables = true,
-                        },
+                            undefinedVariables = "on",
+                            argumentCount = "on",
+                        }
                     },
                 },
             })
