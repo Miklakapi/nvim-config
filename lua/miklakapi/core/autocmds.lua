@@ -56,11 +56,17 @@ autocmd("LspAttach", {
         end, "Rename symbol")
 
         lsp_keymap(buffer, "n", "[d", function()
-            vim.diagnostic.goto_next()
+            vim.diagnostic.jump({
+                count = 1,
+                float = true
+            })
         end, "Next diagnostic")
 
         lsp_keymap(buffer, "n", "]d", function()
-            vim.diagnostic.goto_prev()
+            vim.diagnostic.jump({
+                count = -1,
+                float = true,
+            })
         end, "Previous diagnostic")
     end,
 })
