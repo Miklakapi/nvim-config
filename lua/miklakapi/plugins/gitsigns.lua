@@ -14,26 +14,63 @@ return {
             })
         end
 
+        local signs = {
+            add = {
+                text = "┃",
+            },
+            change = {
+                text = "┃",
+            },
+            delete = {
+                text = "_",
+            },
+            topdelete = {
+                text = "‾",
+            },
+            changedelete = {
+                text = "~",
+            },
+            untracked = {
+                text = "┆",
+            },
+        }
+
+        local signs_staged = {
+            add = {
+                text = "┃",
+            },
+            change = {
+                text = "┃",
+            },
+            delete = {
+                text = "_",
+            },
+            topdelete = {
+                text = "‾",
+            },
+            changedelete = {
+                text = "~",
+            },
+            untracked = {
+                text = "┆",
+            },
+        }
+
         gitsigns.setup({
-            signs = {
-                add = {
-                    text = "+",
-                },
-                change = {
-                    text = "~",
-                },
-                delete = {
-                    text = "_",
-                },
-                topdelete = {
-                    text = "‾",
-                },
-                changedelete = {
-                    text = "~",
-                },
-                untracked = {
-                    text = "┆",
-                },
+            signs = signs,
+            signs_staged = signs_staged,
+
+            signcolumn = true,
+            numhl = false,
+            linehl = false,
+            word_diff = false,
+
+            preview_config = {
+                border = "rounded",
+                style = "minimal",
+                relative = "cursor",
+                row = 0,
+                col = 1,
             },
 
             on_attach = function(buffer)
