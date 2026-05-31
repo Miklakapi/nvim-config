@@ -54,7 +54,17 @@ return {
                 "prettier",
             },
             php = {
-                "php_cs_fixer",
+                "project_php_cs_fixer",
+            },
+        },
+
+        formatters = {
+            project_php_cs_fixer = {
+                command = "bin/php-cs-fixer",
+                args = {
+                    "$FILENAME",
+                },
+                stdin = false,
             },
         },
 
