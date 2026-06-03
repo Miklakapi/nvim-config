@@ -14,6 +14,68 @@ return {
             })
         end
 
+        local function setGitsignsColors()
+            vim.api.nvim_set_hl(0, "GitSignsAdd", {
+                fg = "#50fa7b",
+                bg = "NONE",
+            })
+
+            vim.api.nvim_set_hl(0, "GitSignsChange", {
+                fg = "#f1fa8c",
+                bg = "NONE",
+            })
+
+            vim.api.nvim_set_hl(0, "GitSignsDelete", {
+                fg = "#ff5555",
+                bg = "NONE",
+            })
+
+            vim.api.nvim_set_hl(0, "GitSignsTopdelete", {
+                fg = "#ff5555",
+                bg = "NONE",
+            })
+
+            vim.api.nvim_set_hl(0, "GitSignsChangedelete", {
+                fg = "#ffb86c",
+                bg = "NONE",
+            })
+
+            vim.api.nvim_set_hl(0, "GitSignsUntracked", {
+                fg = "#8be9fd",
+                bg = "NONE",
+            })
+
+            vim.api.nvim_set_hl(0, "GitSignsStagedAdd", {
+                fg = "#50fa7b",
+                bg = "NONE",
+            })
+
+            vim.api.nvim_set_hl(0, "GitSignsStagedChange", {
+                fg = "#f1fa8c",
+                bg = "NONE",
+            })
+
+            vim.api.nvim_set_hl(0, "GitSignsStagedDelete", {
+                fg = "#ff5555",
+                bg = "NONE",
+            })
+
+            vim.api.nvim_set_hl(0, "GitSignsStagedTopdelete", {
+                fg = "#ff5555",
+                bg = "NONE",
+            })
+
+            vim.api.nvim_set_hl(0, "GitSignsStagedChangedelete", {
+                fg = "#ffb86c",
+                bg = "NONE",
+            })
+
+            vim.api.nvim_set_hl(0, "GitSignsStagedUntracked", {
+                fg = "#8be9fd",
+                bg = "NONE",
+            })
+        end
+
         local signs = {
             add = {
                 text = "┃",
@@ -55,6 +117,8 @@ return {
                 text = "┆",
             },
         }
+
+        setGitsignsColors()
 
         gitsigns.setup({
             signs = signs,
@@ -111,6 +175,12 @@ return {
                 map(buffer, "n", "<leader>hd", function()
                     gitsigns.diffthis()
                 end, "Diff git file")
+            end,
+        })
+
+        vim.api.nvim_create_autocmd("ColorScheme", {
+            callback = function()
+                setGitsignsColors()
             end,
         })
     end,
