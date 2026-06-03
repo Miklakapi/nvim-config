@@ -43,3 +43,7 @@ keymap("n", "Y", [["+yy]], {
 keymap("v", "Y", [["+y]], {
     desc = "Yank selection to system clipboard",
 })
+
+keymap("n", "<C-f>", "<cmd>silent !tmux neww tmuxs<CR>", {
+    desc = "Open tmux session picker"
+})
