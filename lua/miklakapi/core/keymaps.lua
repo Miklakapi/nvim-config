@@ -47,12 +47,3 @@ keymap("v", "Y", [["+y]], {
 keymap("n", "<C-f>", "<cmd>silent !tmux neww tmuxs<CR>", {
     desc = "Open tmux session picker"
 })
-
-keymap("n", "<leader>pr", function()
-    vim.cmd("write")
-    vim.cmd("source %")
-    vim.cmd("Lazy reload lualine.nvim")
-    vim.notify("Plugins reloaded", vim.log.levels.INFO)
-end, {
-    desc = "Reload current plugin config",
-})
