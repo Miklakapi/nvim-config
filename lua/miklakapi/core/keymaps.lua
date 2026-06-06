@@ -1,15 +1,16 @@
 local keymap = vim.keymap.set
+local scroll_lines = 15
 
 keymap("n", "<leader>pv", vim.cmd.Ex, {
     desc = "Open file explorer",
 })
 
-keymap("n", "<C-d>", "<C-d>zz", {
-    desc = "Scroll down and center",
+keymap("n", "<C-d>", scroll_lines .. "jzz", {
+    desc = "Move down and center",
 })
 
-keymap("n", "<C-u>", "<C-u>zz", {
-    desc = "Scroll up and center",
+keymap("n", "<C-u>", scroll_lines .. "kzz", {
+    desc = "Move up and center",
 })
 
 keymap("n", "<C-j>", vim.cmd.cnext, {
