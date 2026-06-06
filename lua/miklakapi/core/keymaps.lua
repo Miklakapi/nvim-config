@@ -28,6 +28,20 @@ keymap("n", "N", "Nzzzv", {
     desc = "Previous search result centered",
 })
 
+keymap("n", "{", function()
+    vim.cmd.normal({ "}", bang = true })
+end, {
+    silent = true,
+    desc = "Next paragraph",
+})
+
+keymap("n", "}", function()
+    vim.cmd.normal({ "{", bang = true })
+end, {
+    silent = true,
+    desc = "Previous paragraph",
+})
+
 keymap("v", "J", ":m '>+1<CR>gv=gv", {
     desc = "Move selected lines down",
 })
@@ -45,5 +59,5 @@ keymap("v", "Y", [["+y]], {
 })
 
 keymap("n", "<C-f>", "<cmd>silent !tmux neww tmuxs<CR>", {
-    desc = "Open tmux session picker"
+    desc = "Open tmux session picker",
 })
