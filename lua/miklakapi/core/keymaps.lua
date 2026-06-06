@@ -58,6 +58,10 @@ keymap("v", "Y", [["+y]], {
     desc = "Yank selection to system clipboard",
 })
 
-keymap("n", "<C-f>", "<cmd>silent !tmux neww tmuxs<CR>", {
+keymap("n", "<C-f>", function()
+    vim.fn.jobstart({ "tmux", "new-window", "tmuxs" }, {
+        detach = true,
+    })
+end, {
     desc = "Open tmux session picker",
 })
