@@ -17,7 +17,7 @@ return {
             statementStyle = {
                 bold = false,
             },
-            transparent = true,
+            transparent = false,
             dimInactive = false,
             terminalColors = true,
             theme = "wave",
