@@ -56,6 +56,15 @@ return {
             php = {
                 "project_php_cs_fixer",
             },
+            sh = {
+                "shfmt",
+            },
+            bash = {
+                "shfmt",
+            },
+            zsh = {
+                "shfmt",
+            },
         },
 
         formatters = {

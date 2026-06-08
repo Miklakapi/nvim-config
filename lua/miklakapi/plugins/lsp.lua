@@ -26,6 +26,7 @@ local servers = {
     "intelephense",
     "gopls",
     "pyright",
+    "bashls",
 }
 
 return {
@@ -194,6 +195,15 @@ return {
 
             vim.lsp.config("pyright", {
                 capabilities = capabilities,
+            })
+
+            vim.lsp.config("bashls", {
+                capabilities = capabilities,
+                filetypes = {
+                    "sh",
+                    "bash",
+                    "zsh",
+                },
             })
 
             vim.lsp.enable(servers)
