@@ -20,3 +20,6 @@ vim.opt.colorcolumn = "120"
 
 vim.opt.hlsearch = false
 vim.opt.incsearch = true
+
+vim.opt.spell = true
+vim.opt.spelllang = "en_us"

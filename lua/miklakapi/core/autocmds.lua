@@ -16,6 +16,14 @@ local function lsp_keymap(buffer, mode, lhs, rhs, desc)
     })
 end
 
+local function set_spell_highlights()
+    vim.api.nvim_set_hl(0, "SpellBad", {
+        underline = true,
+        undercurl = false,
+        sp = "NONE",
+    })
+end
+
 autocmd("TextYankPost", {
     group = yank_group,
     callback = function()
@@ -71,9 +79,16 @@ autocmd("LspAttach", {
     end,
 })
 
-vim.api.nvim_create_autocmd("FileType", {
+autocmd("FileType", {
     pattern = "php",
     callback = function()
         vim.opt_local.autoindent = true
+    end,
+})
+
+autocmd("ColorScheme", {
+    group = miklakapi_group,
+    callback = function()
+        set_spell_highlights()
     end,
 })
