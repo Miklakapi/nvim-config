@@ -27,6 +27,7 @@ local servers = {
     "gopls",
     "pyright",
     "bashls",
+    "typos_lsp",
 }
 
 return {
