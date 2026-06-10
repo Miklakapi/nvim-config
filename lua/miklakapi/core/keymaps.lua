@@ -79,6 +79,10 @@ keymap("v", "Y", [["+y]], {
     desc = "Yank selection to system clipboard",
 })
 
+keymap("x", "P", [["_dP]], {
+    desc = "Paste without yanking replaced selection",
+})
+
 keymap("n", "<C-f>", function()
     vim.fn.jobstart({ "tmux", "new-window", "tmuxs" }, {
         detach = true,
