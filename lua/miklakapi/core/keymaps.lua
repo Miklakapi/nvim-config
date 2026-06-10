@@ -1,6 +1,26 @@
 local keymap = vim.keymap.set
 local scroll_lines = 15
 
+local function goToNextQuickfixItem()
+    local ok = pcall(vim.cmd.cnext)
+
+    if ok then
+        return
+    end
+
+    pcall(vim.cmd.cfirst)
+end
+
+local function goToPreviousQuickfixItem()
+    local ok = pcall(vim.cmd.cprev)
+
+    if ok then
+        return
+    end
+
+    pcall(vim.cmd.clast)
+end
+
 keymap("n", "<leader>pv", vim.cmd.Ex, {
     desc = "Open file explorer",
 })
@@ -13,11 +33,11 @@ keymap("n", "<C-u>", scroll_lines .. "kzz", {
     desc = "Move up and center",
 })
 
-keymap("n", "<C-j>", vim.cmd.cnext, {
+keymap("n", "<C-j>", goToNextQuickfixItem, {
     desc = "Next quickfix item",
 })
 
-keymap("n", "<C-k>", vim.cmd.cprev, {
+keymap("n", "<C-k>", goToPreviousQuickfixItem, {
     desc = "Previous quickfix item",
 })
 
