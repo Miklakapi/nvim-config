@@ -90,3 +90,11 @@ keymap("n", "<C-f>", function()
 end, {
     desc = "Open tmux session picker",
 })
+
+keymap("i", "<C-l>", "<Del>", {
+    desc = "Delete character after cursor",
+})
+
+keymap("i", "<C-b>", "<C-o>dw", {
+    desc = "Delete word after cursor",
+})
