@@ -58,21 +58,8 @@ return {
 
                     ["<C-e>"] = cmp.mapping.abort(),
 
-                    ["<CR>"] = cmp.mapping(function()
-                        if cmp.visible() and cmp.get_selected_entry() then
-                            cmp.confirm({
-                                select = false,
-                            })
-                        else
-                            vim.api.nvim_feedkeys(
-                                vim.api.nvim_replace_termcodes("<C-g>u<CR>", true, false, true),
-                                "n",
-                                false
-                            )
-                        end
-                    end, {
-                        "i",
-                        "s",
+                    ["<CR>"] = cmp.mapping.confirm({
+                        select = false,
                     }),
 
                     ["<Tab>"] = cmp.mapping(function(fallback)
