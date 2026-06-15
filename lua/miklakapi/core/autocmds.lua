@@ -43,6 +43,10 @@ autocmd("LspAttach", {
             vim.lsp.buf.definition()
         end, "Go to definition")
 
+        lsp_keymap(buffer, "n", "gi", function()
+            vim.lsp.buf.implementation()
+        end, "Go to implementation")
+
         lsp_keymap(buffer, "n", "K", function()
             vim.lsp.buf.hover()
         end, "Show documentation")
