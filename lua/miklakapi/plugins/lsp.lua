@@ -17,6 +17,27 @@ local function get_node_module_path(module_name)
     return nil
 end
 
+local function read_lsp_exclude_patterns()
+    local root_dir = vim.fn.getcwd()
+    local exclude_file_path = root_dir .. "/.lsp-exclude"
+
+    if vim.fn.filereadable(exclude_file_path) ~= 1 then
+        return {}
+    end
+
+    local patterns = {}
+
+    for _, line in ipairs(vim.fn.readfile(exclude_file_path)) do
+        local trimmed_line = vim.fn.trim(line)
+
+        if trimmed_line ~= "" and not vim.startswith(trimmed_line, "#") then
+            table.insert(patterns, trimmed_line)
+        end
+    end
+
+    return patterns
+end
+
 local servers = {
     "lua_ls",
     "vtsls",
@@ -59,7 +80,7 @@ return {
         },
         config = function()
             local capabilities = require("cmp_nvim_lsp").default_capabilities()
-
+            local lsp_exclude_patterns = read_lsp_exclude_patterns()
             local ts_lit_plugin_path = get_node_module_path("ts-lit-plugin")
 
             local vtsls_global_plugins = {
@@ -181,11 +202,12 @@ return {
                     intelephense = {
                         files = {
                             maxSize = 5000000,
+                            exclude = lsp_exclude_patterns,
                         },
                         diagnostics = {
                             undefinedVariables = "on",
                             argumentCount = "on",
-                        }
+                        },
                     },
                 },
             })
