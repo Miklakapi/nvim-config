@@ -63,6 +63,8 @@ from the dotfiles repository.
 | `completion.lua` | Configures completion and snippets with nvim-cmp, LuaSnip, LSP, path, buffer, and command-line sources. |
 | `lsp.lua` | Installs and configures language servers through Mason for Lua, TypeScript, Vue, ESLint, CSS/SCSS, PHP, Go, Python, Bash, and typos. |
 | `formatting.lua` | Formats files with conform.nvim using Prettier, Stylua, shfmt, LSP fallback, and a project-local PHP CS Fixer command. |
+| `markdown-preview.lua` | Adds browser-based Markdown preview for README and documentation files. |
+| `nvim-multi-repo.lua` | Adds multi-repository navigation and project-aware workflows across related repositories. |
 
 The TypeScript setup uses `vtsls` with Vue support and optionally enables `ts-lit-plugin` when it is available in the current project.
 
