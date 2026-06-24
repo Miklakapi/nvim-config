@@ -17,8 +17,16 @@ local plugin_config = function()
         end,
     })
 
-    vim.keymap.set("n", "<leader>pr", "<cmd>MultiRepo<cr>", {
-        desc = "Open project repositories",
+    vim.keymap.set("n", "<leader>mr", "<cmd>MultiRepo<cr>", {
+        desc = "Open multi-repo picker",
+    })
+
+    vim.keymap.set("n", "<leader>mf", "<cmd>MultiRepoFetch<cr>", {
+        desc = "Fetch multi-repo repositories",
+    })
+
+    vim.keymap.set("n", "<leader>ml", "<cmd>MultiRepoPull<cr>", {
+        desc = "Pull multi-repo repositories",
     })
 end
 
