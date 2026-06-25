@@ -195,6 +195,7 @@ return {
 
             vim.lsp.config("intelephense", {
                 capabilities = capabilities,
+                root_dir = vim.fn.getcwd(),
                 filetypes = {
                     "php",
                 },
