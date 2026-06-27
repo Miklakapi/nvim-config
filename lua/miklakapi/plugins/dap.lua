@@ -9,7 +9,7 @@ end
 local function get_project_dap_path_mappings_file_path()
     local project_root = vim.fn.getcwd()
 
-    return project_root .. "/.dap-path-mappings"
+    return project_root .. "/.mkdev/dap-path-mappings"
 end
 
 local function read_project_dap_path_mappings()

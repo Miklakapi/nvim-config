@@ -19,7 +19,7 @@ end
 
 local function read_lsp_exclude_patterns()
     local root_dir = vim.fn.getcwd()
-    local exclude_file_path = root_dir .. "/.lsp-exclude"
+    local exclude_file_path = root_dir .. "/.mkdev/lsp-exclude"
 
     if vim.fn.filereadable(exclude_file_path) ~= 1 then
         return {}
