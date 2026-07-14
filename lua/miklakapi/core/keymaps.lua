@@ -1,6 +1,10 @@
 local keymap = vim.keymap.set
 local scroll_lines = 15
 
+local function openProjectExplorer()
+    vim.cmd("Explore " .. vim.fn.fnameescape(vim.fn.getcwd()))
+end
+
 local function goToNextQuickfixItem()
     local ok = pcall(vim.cmd.cnext)
 
@@ -23,6 +27,10 @@ end
 
 keymap("n", "<leader>pv", vim.cmd.Ex, {
     desc = "Open file explorer",
+})
+
+keymap("n", "<leader>pp", openProjectExplorer, {
+    desc = "Open project explorer",
 })
 
 keymap("n", "<C-d>", scroll_lines .. "jzz", {
