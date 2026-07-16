@@ -3,6 +3,10 @@ local use_local_plugin = vim.fn.isdirectory(local_plugin_path) == 1
 
 local plugin_config = function()
     require("multi_repo").setup({
+        updater = {
+            concurrency = 10,
+        },
+
         on_select = function(repository)
             vim.cmd("topleft new")
 
